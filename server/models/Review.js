@@ -28,6 +28,7 @@ const reviewSchema = new Schema(
   }
 );
 
+// Count number of reactions on a review
 reviewSchema.virtual('reactionCount').get(function() {
   return this.reactions.length;
 });

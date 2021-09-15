@@ -1,6 +1,7 @@
 const { Schema } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
+// Allow users to react to reviews
 const reactionSchema = new Schema(
   {
     reactionBody: {
