@@ -1,10 +1,10 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_REVIEWS = gql`
-query thoughts($username: String) {
-    thoughts(username: $username) {
+query reviews($username: String) {
+    reviews(username: $username) {
         _id
-        thoughtText
+        reviewText
         createdAt
         username
         reactionCount
@@ -19,10 +19,10 @@ query thoughts($username: String) {
 `;
 
 export const QUERY_REVIEW = gql`
-  query thought($id: ID!) {
-    thought(_id: $id) {
+  query review($id: ID!) {
+    review(_id: $id) {
       _id
-      thoughtText
+      reviewText
       createdAt
       username
       reactionCount
@@ -47,9 +47,9 @@ export const QUERY_USER = gql`
         _id
         username
       }
-      thoughts {
+      reviews {
         _id
-        thoughtText
+        reviewText
         createdAt
         reactionCount
       }
@@ -65,9 +65,9 @@ export const QUERY_ME = gql`
     username
     email
     friendCount
-    thoughts {
+    reviews {
       _id
-      thoughtText
+      reviewText
       createdAt
       reactionCount
       reactions {

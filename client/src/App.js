@@ -10,6 +10,7 @@ import Signup from './pages/Signup';
 import Home from './pages/Home';
 
 
+
 const httpLink = createHttpLink({
   //new link to graphql server with graphql endpoint
   uri: '/graphql',
