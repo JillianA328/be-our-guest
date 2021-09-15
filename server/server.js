@@ -14,25 +14,25 @@ const server = new ApolloServer({
     context: authMiddleware
 });
 
-//yelp api
-'use strict';
-const yelp = require('yelp-fusion');
-const apiKey = '<rBXdXPcoa2B-XASARjXsQWYdly4k_XIDr7zCBB_mhF9pSSooY0jpj3yumdeEdY3JFUUy3hJnM2xHZ4p-dpi8HIQbPZvoPmA3kHBiduN7TZ2ITT7V7HbOkJiGTjZBYXYx>';
+// //yelp api
+// 'use strict';
+// const yelp = require('yelp-fusion');
+// const apiKey = '<rBXdXPcoa2B-XASARjXsQWYdly4k_XIDr7zCBB_mhF9pSSooY0jpj3yumdeEdY3JFUUy3hJnM2xHZ4p-dpi8HIQbPZvoPmA3kHBiduN7TZ2ITT7V7HbOkJiGTjZBYXYx>';
 
-const searchRequest = {
-    term: 'Four Barrel Coffee',
-    location: 'san francisco, ca'
-};
+// const searchRequest = {
+//     term: 'Four Barrel Coffee',
+//     location: 'san francisco, ca'
+// };
 
-const client = yelp.client(apiKey);
+// const client = yelp.client(apiKey);
 
-client.search(searchRequest).then(response => {
-    const firstResult = response.jsonBody.businesses[0];
-    const prettyJson = JSON.stringify(firstResult, null, 4);
-    console.log(prettyJson);
-}).catch(e => {
-    console.log(e);
-});
+// client.search(searchRequest).then(response => {
+//     const firstResult = response.jsonBody.businesses[0];
+//     const prettyJson = JSON.stringify(firstResult, null, 4);
+//     console.log(prettyJson);
+// }).catch(e => {
+//     console.log(e);
+// });
 
 
 server.applyMiddleware({ app });
