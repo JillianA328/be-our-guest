@@ -9,9 +9,9 @@ function Footer() {
             <section className="d-flex justify-content-center  p-4 border-bottom">
                 <div>
 
-                    <p href="https://github.com/JillianA328/be-our-guest" className="me-4 text-white fs-1">
+                    <a href="https://github.com/JillianA328/be-our-guest" className="me-4 text-white fs-1">
                         <GiFoodTruck />
-                    </p>
+                    </a>
 
                 </div>
             </section>
