@@ -1,58 +1,39 @@
-import React from "react";
-import Auth from "../../utils/auth";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth';
 
-function Nav() {
+const Header = () => {
 
-  function showNavigation() {
-    if (Auth.loggedIn()) {
-      return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/orderHistory">
-              Order History
-            </Link>
-          </li>
-          <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
-              Logout
-            </a>
-          </li>
-        </ul>
-      );
-    } else {
-      return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/signup">
-              Signup
-            </Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/login">
-              Login
-            </Link>
-          </li>
-        </ul>
-      );
-    }
+  const logout = event => {
+    event.preventDefault();
+    Auth.logout();
   }
 
   return (
-    <header className="flex-row px-1">
-      <h1>
+    <header className="mb-4 py-2 flex-row align-center main-header">
+      <div className="container flex-row justify-space-between-lg justify-center align-center">
         <Link to="/">
-          <span role="img" aria-label="rose">🌹</span>
-          Be Our Guest
+          <h1>🌹Be Our Guest</h1>
         </Link>
-      </h1>
 
-      <nav>
-        {showNavigation()}
-      </nav>
+        <nav className="text-center">
+          {Auth.loggedIn() ? (
+            <>
+              <Link to="/profile">View Profile</Link>
+              <a href="/" onClick={logout}>
+                Logout
+              </a>
+            </>
+          ) : (
+            <>
+              <Link to="/login">Login</Link>
+              <Link to="/signup">Signup</Link>
+            </>
+          )}
+        </nav>
+      </div>
     </header>
   );
-}
+};
 
-export default Nav;
+export default Header;
