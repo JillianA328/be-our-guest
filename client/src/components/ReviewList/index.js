@@ -19,10 +19,10 @@ const ReviewList = ({ reviews, title }) => {
 
                             {review.username}
                             </Link>{' '}
-                            thought on {review.createdAt}
+                            review on {review.createdAt}
                         </p>
                         <div className="card-body">
-                            <Link to={`/thought/${review._id}`}>
+                            <Link to={`/review/${review._id}`}>
                             <p>{review.reviewText}</p>
                             <p className="mb-0">
                                 Reactions: {review.reactionCount} || Click to{' '}

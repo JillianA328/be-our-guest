@@ -28,7 +28,7 @@ const ReviewForm = () => {
                 onSubmit={handleFormSubmit}
             >
                 <textarea
-                    placeholder="Here's a new thought..."
+                    placeholder="Here's a new review..."
                     value={reviewText}
                     className="form-input col-12 col-md-9"
                     onChange={handleChange}
