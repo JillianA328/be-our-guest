@@ -24,13 +24,13 @@ mutation addUser($username: String!, $email: String!, $password: String!){
 }
 `;
 
-export const SAVE_BOOK = gql`
-  mutation saveBook($reviewData: ReviewInput!) {
-    saveReview(reviewData: $reviewData) {
+export const ADD_REVIEW = gql`
+  mutation addReview($reviewData: ReviewInput!) {
+    addReview(reviewData: $reviewData) {
       _id
       username
       email
-      savedReviews {
+      addReviews {
         reviewId
         reviewText
         createdAt
