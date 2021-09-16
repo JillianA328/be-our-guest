@@ -8,7 +8,8 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
-import Profile from './pages/Profile'
+import Profile from './pages/Profile';
+import SingleReview from './pages/SingleReview';
 
 
 
@@ -45,6 +46,7 @@ function App() {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/profile" component={Profile} />
+              <Route exact path="/review/:id" component={SingleReview} />
             </Switch>
           </div>
           <Footer />
