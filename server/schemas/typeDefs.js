@@ -44,6 +44,7 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         addReview(reviewText: String!): Review
         addReaction(reviewId: ID!, reactionBody: String!): Review
+        addFriend(friendId: ID! ) User
     }
 `;
 

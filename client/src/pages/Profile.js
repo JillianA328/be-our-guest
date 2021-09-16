@@ -39,15 +39,15 @@ const Profile = () => {
     )
   }
 
-//   const handleClick = async () => {
-//     try {
-//       await addFriend({
-//         variables: { id: user._id }
-//       });
-//     } catch (e) {
-//       console.error(e)
-//     }
-//   }
+  const handleClick = async () => {
+    try {
+      await addFriend({
+        variables: { id: user._id }
+      });
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
   return (
     <div>
@@ -56,11 +56,11 @@ const Profile = () => {
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2>
 
-        {/* {userParam && (
+        {userParam && (
           <button className="btn ml-auto" onClick={handleClick}>
             Add Friend
           </button>
-        )} */}
+        )}
 
       </div>
 
@@ -70,11 +70,11 @@ const Profile = () => {
         </div>
 
         <div className="col-12 col-lg-3 mb-3">
-          {/* <FriendList
+          <FriendList
             username={user.username}
             friendCount={user.friendCount}
             friends={user.friends}
-          /> */}
+          />
         </div>
       </div>
       <div className="mb-3">{!userParam && <ReviewForm />}</div>
