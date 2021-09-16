@@ -27,7 +27,7 @@ const typeDefs = gql`
     }
 
     type Auth {
-        token: ID!
+        token: ID
         user: User
     }
 
@@ -42,8 +42,8 @@ const typeDefs = gql`
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        addReview(thoughtText: String!): Review
-        addReaction(thoughtId: ID!, reactionBody: String!): Review
+        addReview(reviewText: String!): Review
+        addReaction(reviewId: ID!, reactionBody: String!): Review
     }
 `;
 
