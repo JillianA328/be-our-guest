@@ -17,6 +17,33 @@ const ReviewForm = () => {
         setText('');
         setCharacterCount(0);
     }
+
+    const handleAddReview = async (bookId) => {
+        // find the book in `searchedBooks` state by the matching id
+        const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
+    
+        // get token
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+    
+        if (!token) {
+          return false;
+        }
+    
+        try {
+      
+          // updated to use new mutation
+          const { data } = await saveBook({
+            variables: { bookData: { ...bookToSave } },
+          });
+    
+          console.log("data:", data);
+    
+          // if book successfully saves to user's account, save book id to state
+          setSavedBookIds([...savedBookIds, bookToSave.bookId]);
+        } catch (err) {
+          console.error(err);
+        }
+      };
     
     return (
         <div>

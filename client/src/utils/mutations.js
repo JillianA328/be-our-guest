@@ -24,17 +24,32 @@ mutation addUser($username: String!, $email: String!, $password: String!){
 }
 `;
 
+
 export const ADD_REVIEW = gql`
-  mutation addReview($reviewData: ReviewInput!) {
-    addReview(reviewData: $reviewData) {
+  mutation addReview($reviewText: String!) {
+    addReview(reviewText: $reviewText) {
       _id
+      reviewText
+      createdAt
       username
-      email
-      addReviews {
-        reviewId
-        reviewText
+      reactionCount
+      reactions {
+        _id
+      }
+    }
+  }
+`;
+
+export const ADD_REACTION = gql`
+  mutation addReaction($reviewId: ID!, $reactionBody: String!) {
+    addReaction(reviewId: $reviewId, reactionBody: $reactionBody) {
+      _id
+      reactionCount
+      reactions {
+        _id
+        reactionBody
         createdAt
-        reactions
+        username
       }
     }
   }
