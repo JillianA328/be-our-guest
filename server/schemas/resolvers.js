@@ -72,6 +72,30 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
+        // updateReview: async (parent, { reviewId, ...reviewText }, context ) => {
+        //     if (context.user) {
+        //         const updatedReview = await Review.findOneAndUpdate(
+        //             { _id: reviewId },
+        //             { $push: { reviews: { ...reviewText, review: reviewId } } },
+        //             { new: true }
+        //         );
+
+        //         return updatedReview;
+        //     }
+
+        //     throw new AuthenticationError('You need to be logged in!');
+        // },
+        deleteReview: async (parent, { reviewId }, context) => {
+            if (context.user) {
+                const deletedReview = await Review.findOneAndDelete(
+                    { _id: reviewId }
+                );
+
+                return deletedReview;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
         addReaction: async (parent, { reviewId, reactionBody }, context ) => {
             if (context.user) {
                 const updatedReview = await Review.findOneAndUpdate(
