@@ -8,6 +8,7 @@ const typeDefs = gql`
         username: String
         email: String
         reviews: [Review]
+        friends: [User]
     }
 
     type Review {
@@ -46,7 +47,7 @@ const typeDefs = gql`
         updateReview(reviewText: String!): Review
         deleteReview(reviewId: ID!): Review
         addReaction(reviewId: ID!, reactionBody: String!): Review
-        addFriend(friendId: ID! ) User
+        addFriend(friendId: ID! ): User
     }
 `;
 

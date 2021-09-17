@@ -15,7 +15,7 @@ import Auth from '../utils/auth';
 
 const Profile = () => {
   const { username: userParam } = useParams();
-  const [addFriend] = useMutation(ADD_FRIEND);
+  const [addFriend, { error }] = useMutation(ADD_FRIEND);
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam }
@@ -40,11 +40,15 @@ const Profile = () => {
   }
 
   const handleClick = async () => {
+    console.log(user._id);
     try {
-      await addFriend({
+      const { data } = await addFriend({
         variables: { id: user._id }
       });
+
+      console.log(data)
     } catch (e) {
+      console.log(error)
       console.error(e)
     }
   }
@@ -56,11 +60,11 @@ const Profile = () => {
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2>
 
-        {userParam && (
-          <button className="btn ml-auto" onClick={handleClick}>
-            Add Friend
-          </button>
-        )}
+        {/* {userParam && ( */}
+        <button className="btn ml-auto" onClick={handleClick}>
+          Add Friend
+        </button>
+        {/* )} */}
 
       </div>
 
@@ -78,7 +82,7 @@ const Profile = () => {
         </div>
       </div>
       <div className="mb-3">{!userParam && <ReviewForm />}</div>
-    </div>
+    </div >
   );
 };
 
