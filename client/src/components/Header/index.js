@@ -13,7 +13,7 @@ const Header = () => {
     <header className="mb-4 py-2 flex-row align-center main-header">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <Link to="/">
-          <h1>🌹Be Our Guest</h1>
+          <h1> <span>🌹</span>Be Our Guest</h1>
         </Link>
 
         <nav className="text-center">
