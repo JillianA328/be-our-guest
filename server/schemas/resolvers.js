@@ -79,7 +79,6 @@ const resolvers = {
                     { reviewText },
                     { new: true }
                 );
-                console.log(updatedReview);
                 return updatedReview;
             }
 
