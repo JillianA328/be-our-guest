@@ -1,7 +1,7 @@
 {
   "name": "be-our-guest",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Table of Contents   * [Description](#challenge-description)   * [Built With](#built-with)   * [Team Members](#team-members)   * [Installation](#installation)   * [Usage](#usage)   * [Screenshot](#screenshot)   * [License](#license)   * [Contributing](#contributing)   * [Tests](#tests)   * [Links](#links)",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
@@ -18,10 +18,18 @@
   },
   "dependencies": {
     "@apollo/client": "^3.4.11",
+    "apollo-server-express": "^2.12.0",
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
     "graphql": "^15.5.3",
-    "react-apollo": "^3.1.5",
-    "yelp-fusion": "^3.0.0"
-  }
+    "react-apollo": "^3.1.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JillianA328/be-our-guest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JillianA328/be-our-guest/issues"
+  },
+  "homepage": "https://github.com/JillianA328/be-our-guest#readme"
 }
