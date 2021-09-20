@@ -54,3 +54,12 @@ export const ADD_REACTION = gql`
     }
   }
 `;
+
+export const UPDATE_REVIEW = gql`
+  mutation updateReview($reviewText: String!) {
+    updateReview(reviewText: $reviewText) {
+      _id
+      reviewText
+    }
+  }
+`;
