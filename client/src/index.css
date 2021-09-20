@@ -172,6 +172,14 @@ footer {
   font-size: 1.4rem;
 }
 
+.card-footer {
+  color: var(--secondary);
+  margin: 0;
+  background-color: var(--dark);
+  padding: 0.625rem;
+  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+}
+
 /* FORM */
 .form-label,
 .form-input,

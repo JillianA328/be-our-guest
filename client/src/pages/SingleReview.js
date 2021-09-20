@@ -4,7 +4,9 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_REVIEW } from '../utils/queries';
 import ReactionList from '../components/ReactionList';
 import ReactionForm from "../components/ReactionForm";
-import Auth from "../utils/auth";
+import Auth from '../utils/auth';
+import ReviewFooter from '../components/ReviewFooter';
+
 
 const SingleReview = props => {
 
@@ -20,6 +22,8 @@ const SingleReview = props => {
     return <div>Loading...</div>;
   }
 
+  
+
   return (
     <div>
       <div className="card mb-3">
@@ -32,12 +36,16 @@ const SingleReview = props => {
         <div className="card-body">
           <p>{review.reviewText}</p>
         </div>
+        <div className="card-footer">
+        {Auth.loggedIn() && <ReviewFooter reviewId={review._id} />}
+        </div>
       </div>
       {review.reactionCount > 0 && (
         <ReactionList reactions={review.reactions} />
       )}
 
       {Auth.loggedIn() && <ReactionForm reviewId={review._id} />}
+
     </div>
   );
 };
