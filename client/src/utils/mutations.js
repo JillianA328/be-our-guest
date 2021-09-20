@@ -66,4 +66,22 @@ export const ADD_FRIEND = gql`
       }
     }
   }
+  `;
+  
+export const DELETE_REVIEW = gql`
+mutation deleteReview($reviewId: ID!) {
+  deleteReview(reviewId: $reviewId) {
+    _id
+    reviewText
+        createdAt
+        username
+        reactionCount
+        reactions {
+          _id
+          reactionBody
+          createdAt
+          username
+        }
+  }
+}
 `;
