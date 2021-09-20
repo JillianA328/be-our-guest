@@ -76,10 +76,9 @@ const resolvers = {
             if (context.user) {
                 const updatedReview = await Review.findByIdAndUpdate(
                     _id,
-                    { $push: { reviews: reviewText } },
+                    { reviewText },
                     { new: true }
                 );
-
                 return updatedReview;
             }
 
