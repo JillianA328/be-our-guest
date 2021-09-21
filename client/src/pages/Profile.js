@@ -3,11 +3,11 @@ import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 
 import ReviewList from '../components/ReviewList';
-//import FriendList from '../components/FriendList';
+import FriendList from '../components/FriendsList';
 import ReviewForm from '../components/ReviewForm';
 
 
-//import { ADD_FRIEND } from '../utils/mutations';
+import { ADD_FRIEND } from '../utils/mutations';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -15,7 +15,7 @@ import Auth from '../utils/auth';
 
 const Profile = () => {
   const { username: userParam } = useParams();
-  //const [addFriend] = useMutation(ADD_FRIEND);
+  const [addFriend, { error }] = useMutation(ADD_FRIEND);
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam }
@@ -39,15 +39,19 @@ const Profile = () => {
     )
   }
 
-//   const handleClick = async () => {
-//     try {
-//       await addFriend({
-//         variables: { id: user._id }
-//       });
-//     } catch (e) {
-//       console.error(e)
-//     }
-//   }
+  const handleClick = async () => {
+    console.log(user._id);
+    try {
+      const { data } = await addFriend({
+        variables: { id: user._id }
+      });
+
+      console.log(data)
+    } catch (e) {
+      console.log(error)
+      console.error(e)
+    }
+  }
 
   return (
     <div>
@@ -56,11 +60,11 @@ const Profile = () => {
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2>
 
-        {/* {userParam && (
-          <button className="btn ml-auto" onClick={handleClick}>
-            Add Friend
-          </button>
-        )} */}
+        {/* {userParam && ( */}
+        <button className="btn ml-auto" onClick={handleClick}>
+          Add Friend
+        </button>
+        {/* )} */}
 
       </div>
 
@@ -70,15 +74,15 @@ const Profile = () => {
         </div>
 
         <div className="col-12 col-lg-3 mb-3">
-          {/* <FriendList
+          <FriendList
             username={user.username}
             friendCount={user.friendCount}
             friends={user.friends}
-          /> */}
+          />
         </div>
       </div>
       <div className="mb-3">{!userParam && <ReviewForm />}</div>
-    </div>
+    </div >
   );
 };
 
