@@ -58,31 +58,27 @@ const ReviewForm = () => {
 
   return (
     <div>
+      <p className={`m-0 ${characterCount === 280 ? 'text-error' : ''}`}>
+        Character Count: {characterCount}/280
+      </p>
+      <Form onSubmit={handleFormSubmit}>
 
-
-      <Form>
-        {/* className="flex-row justify-center justify-space-between-md align-stretch"
-        onSubmit={handleFormSubmit} */}
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1" onSubmit={handleFormSubmit}>
           <Form.Label>Restaurant Name</Form.Label>
-          <Form.Control type="text" placeholder="Restaurant Name"
+          <Form.Control type="text" placeholder="text"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Write a Review!</Form.Label>
+          <Form.Control as="textarea" rows={3}
             value={reviewText}
-            className="form-input col-6 col-md-4"
+            className="form-input col-12 col-md-9"
             onChange={handleChange} />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="review-form">
-          <Form.Label>Leave a review!</Form.Label>  
-          <p className={`m-0 ${characterCount === 280 ? 'text-error' : ''}`}>
-          Character Count: {characterCount}/280
-          </p>
-          <Form.Control as="textarea" rows={3} />
-          
-          <button className="btn col-12 col-md-3" type="submit">
-            Submit
-          </button>
-
-        </Form.Group>
       </Form>
+      <button className="btn col-12 col-md-3" type="submit">
+        Submit
+      </button>
     </div>
   );
 };
