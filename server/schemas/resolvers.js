@@ -61,6 +61,7 @@ const resolvers = {
             return { token, user };
         },
         addReview: async (parent, args, context) => {
+            console.log("Resolvers");
             if (context.user) {
                 const review = await Review.create({ ...args, username: context.user.username });
 
@@ -75,7 +76,7 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
-        updateReview: async (parent, { _id, reviewText }, context ) => {
+        updateReview: async (parent, { _id, reviewText }, context) => {
             if (context.user) {
                 const updatedReview = await Review.findByIdAndUpdate(
                     _id,

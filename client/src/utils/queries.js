@@ -5,6 +5,7 @@ query reviews($username: String) {
     reviews(username: $username) {
         _id
         reviewText
+        restName
         createdAt
         username
         reactionCount

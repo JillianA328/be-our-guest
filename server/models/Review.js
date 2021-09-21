@@ -4,9 +4,21 @@ const dateFormat = require('../utils/dateFormat');
 
 const reviewSchema = new Schema(
   {
+    reviewTitle: {
+      type: String,
+      required: 'Title must be entered to leave a review',
+      minlength: 1,
+      maxlength: 100
+    },
     reviewText: {
       type: String,
       required: 'Text must be entered to leave a review',
+      minlength: 1,
+      maxlength: 280
+    },
+    restName: {
+      type: String,
+      required: 'Please enter Restaurant name',
       minlength: 1,
       maxlength: 280
     },
@@ -29,7 +41,7 @@ const reviewSchema = new Schema(
 );
 
 // Count number of reactions on a review
-reviewSchema.virtual('reactionCount').get(function() {
+reviewSchema.virtual('reactionCount').get(function () {
   return this.reactions.length;
 });
 
