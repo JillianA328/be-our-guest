@@ -26,8 +26,8 @@ mutation addUser($username: String!, $email: String!, $password: String!){
 
 
 export const ADD_REVIEW = gql`
-  mutation addReview($reviewText: String!) {
-    addReview(reviewText: $reviewText) {
+  mutation addReview($reviewText: String!, $restName: String!) {
+    addReview(reviewText: $reviewText, restName: $restName) {
       _id
       reviewText
       createdAt
@@ -67,7 +67,7 @@ export const ADD_FRIEND = gql`
     }
   }
   `;
-  
+
 export const DELETE_REVIEW = gql`
 mutation deleteReview($reviewId: ID!) {
   deleteReview(reviewId: $reviewId) {

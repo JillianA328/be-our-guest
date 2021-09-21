@@ -13,6 +13,7 @@ import SingleReview from './pages/SingleReview';
 
 
 
+
 const httpLink = createHttpLink({
   //new link to graphql server with graphql endpoint
   uri: '/graphql',

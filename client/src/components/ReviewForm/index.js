@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useMutation } from "@apollo/client";
 import { ADD_REVIEW } from "../../utils/mutations";
 import { QUERY_REVIEWS, QUERY_ME } from "../../utils/queries";
-import { Container, Col, Row, Jumbotron, Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 const ReviewForm = () => {
 
   const [reviewText, setText] = useState('');
+  const [restName, setRestName] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addReview, { error }] = useMutation(ADD_REVIEW, {
@@ -35,26 +36,31 @@ const ReviewForm = () => {
 
   const handleChange = event => {
     if (event.target.value.length <= 280) {
-      setText(event.target.value);
-      setCharacterCount(event.target.value.length);
+      if (event.target.id == "reviewId") {
+        setText(event.target.value);
+        setCharacterCount(event.target.value.length);
+      } else {
+        setRestName(event.target.value)
+      }
     }
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log("Here you are");
+    console.log({ reviewText, restName })
     try {
       // add thought to database
       await addReview({
-        variables: { reviewText },
+        variables: { reviewText, restName },
       });
       setText("");
+      setRestName("");
       setCharacterCount(0);
     } catch (e) {
       console.log(e);
     }
   };
-
 
   return (
     <div>
@@ -63,24 +69,34 @@ const ReviewForm = () => {
       </p>
       <Form onSubmit={handleFormSubmit}>
 
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1" onSubmit={handleFormSubmit}>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Restaurant Name</Form.Label>
-          <Form.Control type="text" placeholder="text"
+          <Form.Control type="restName" placeholder=""
+            value={restName}
+            id="rName"
+            className="form-input col-12 col-md-9"
+            onChange={handleChange}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Write a Review!</Form.Label>
           <Form.Control as="textarea" rows={3}
             value={reviewText}
+            id="reviewId"
             className="form-input col-12 col-md-9"
-            onChange={handleChange} />
+            onChange={handleChange}
+            placeholder="Add new review here!" />
+
         </Form.Group>
+        <button className="btn col-12 col-md-3" type="submit">
+          Submit
+        </button>
       </Form>
-      <button className="btn col-12 col-md-3" type="submit">
-        Submit
-      </button>
+
     </div>
   );
 };
+
+
 
 export default ReviewForm;

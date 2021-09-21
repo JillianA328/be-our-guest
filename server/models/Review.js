@@ -10,6 +10,12 @@ const reviewSchema = new Schema(
       minlength: 1,
       maxlength: 280
     },
+    restName: {
+      type: String,
+      required: 'Please enter Restaurant name',
+      minlength: 1,
+      maxlength: 280
+    },
     createdAt: {
       type: Date,
       default: Date.now,
@@ -29,7 +35,7 @@ const reviewSchema = new Schema(
 );
 
 // Count number of reactions on a review
-reviewSchema.virtual('reactionCount').get(function() {
+reviewSchema.virtual('reactionCount').get(function () {
   return this.reactions.length;
 });
 
