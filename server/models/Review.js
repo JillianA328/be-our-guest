@@ -4,7 +4,7 @@ const dateFormat = require('../utils/dateFormat');
 
 const reviewSchema = new Schema(
   {
-    reviewTitle: {
+    restName: {
       type: String,
       required: 'Title must be entered to leave a review',
       minlength: 1,
