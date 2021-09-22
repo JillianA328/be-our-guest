@@ -12,8 +12,8 @@
   * [Tests](#tests)
   * [Links](#links)
 
-  ## Challenge Description
-
+  ## Project Description
+  This project, assigned by Rutgers Coding Bootcamp, required the creation of an online application utilizing all of the skills acquired from class thus far concerning the frontend and backend. Our project concept was to provide a platform in which users can share their reviews regards recipes within the "Be Our Guest" community. The goal of this application was to create a user interface that would allow a user to post about their restaurant experience and be able to communicate with fellow visitors via commenting functionality on posts.
 
   ## Built With
   * JavaScript
@@ -35,7 +35,7 @@
 
 
   ## Usage
- Can be used to rate restaurants and provide reviews as well as reactions to other peoples reviews. 
+  Can be used to rate restaurants and provide reviews as well as reactions to other peoples reviews. 
 
   ## Screenshot
   ### Home Page
